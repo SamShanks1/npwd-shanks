@@ -4,7 +4,7 @@ export const houseData: PropertiesInt[] = [
     {
         id: 1,
         house: 'signal st2',
-        keyholders: ["WNP18329", "ZZQ87950", "RPA55712", "ZUP11218", "DSL59111"],
+        keyholders: ["WNP18329", "ZZQ87950", "RPA55712", "ZUP11218", "DSL59111", "WNP18329", "ZZQ87950", "RPA55712", "ZUP11218", "DSL59111"],
         label: 'Signal St 2',
         tier: 1,
         coords: { cam: { h: 73.05778503417969, yaw: -10.0, x: 158.59518432617188, z: 7.23966360092163, y: -2928.146728515625 }, enter: { h: 73.05778503417969, x: 158.59518432617188, z: 7.23966360092163, y: -2928.146728515625 } },
@@ -22,7 +22,7 @@ export const houseData: PropertiesInt[] = [
     {
         id: 3,
         house: 'didion dr3',
-        keyholders: ["WNP18329"],
+        keyholders: ["Sam Shanks", "Tree Roadman",  "Tree IHaveAnExtremelyLongFuckingNameCuzImACunt"],
         label: 'Didion Dr 3',
         tier: 6,
         coords: { cam: { h: 73.05778503417969, yaw: -10.0, x: 158.59518432617188, z: 7.23966360092163, y: -2928.146728515625 }, enter: { h: 73.05778503417969, x: 158.59518432617188, z: 7.23966360092163, y: -2928.146728515625 } },

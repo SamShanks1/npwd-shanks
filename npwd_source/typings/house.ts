@@ -36,5 +36,12 @@ export interface houseLocationInt {
 
 export interface PropertiesInt extends houseBaseInt, houseLocationInt { };
 
-
+export interface testInt extends houseLocationInt {
+  id: number;
+  house: string;
+  keyholders: [{
+    name: string;
+    citizenid: string;
+  }];
+}
   
