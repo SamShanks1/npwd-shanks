@@ -7,4 +7,6 @@ export default {
   CONTACTS: 'CONTACTS',
   CAMERA: 'CAMERA',
   PHONE: 'PHONE',
+  GARAGE: 'GARAGE',
+  MAIL: 'MAIL',
 };
