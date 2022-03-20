@@ -4,7 +4,7 @@ import { ResourceConfig } from '@typings/config';
 export const phoneState = {
   visibility: atom<boolean>({
     key: 'phoneVisibility',
-    default: false,
+    default: true, //CHANGE ON LAUNCH
   }),
   resourceConfig: atom<ResourceConfig>({
     key: 'resourceConfig',
