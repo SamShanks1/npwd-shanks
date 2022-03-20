@@ -281,10 +281,6 @@
     "APPS_TWITTER": "Twitter",
     "APPS_MARKETPLACE": "Marketplace",
     "APPS_CAMERA": "Camera",
-    "APPS_GARAGE": "Garage",
-    "APPS_HOUSE": "Properties",
-    "APPS_MAIL": "Mail",
-
     "APPS_MATCH": "Matchmaker",
     "APPS_CALCULATOR_COPIED": "Result was copied to clipboard!",
     "GENERIC_CLICK_TO_REVEAL": "Click to reveal",

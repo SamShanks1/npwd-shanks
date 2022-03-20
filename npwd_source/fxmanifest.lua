@@ -11,12 +11,9 @@ client_scripts {
 server_script {
     -- This is a file that lives purely in source code and isn't compiled alongside
     -- rest of the release. It's used to detect whether a user can read or not.
-    '@oxmysql2/lib/MySQL.lua',
     'build-detector.js',
-    'resources/dist/server/*.server.js',
-    'resources/server/server.lua'
+    'resources/dist/server/*.server.js'
 }
-
 
 ui_page 'resources/html/index.html'
 
@@ -27,5 +24,6 @@ files {
 }
 
 dependency {
-	'screenshot-basic'
+	'screenshot-basic',
+  'pma-voice'
 }

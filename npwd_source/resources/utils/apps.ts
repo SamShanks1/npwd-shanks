@@ -5,8 +5,6 @@ export default {
   NOTES: 'NOTES',
   MARKETPLACE: 'MARKETPLACE',
   CONTACTS: 'CONTACTS',
-  GARAGE: 'GARAGE',
   CAMERA: 'CAMERA',
   PHONE: 'PHONE',
-  MAIL: 'MAIL',
 };

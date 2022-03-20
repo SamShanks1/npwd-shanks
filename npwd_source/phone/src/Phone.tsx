@@ -10,7 +10,6 @@ import { usePhoneService } from '@os/phone/hooks/usePhoneService';
 import { useApps } from '@os/apps/hooks/useApps';
 import { useTwitterService } from './apps/twitter/hooks/useTwitterService';
 import { useMarketplaceService } from './apps/marketplace/hooks/useMarketplaceService';
-import { useMailService } from './apps/mail/hooks/useMailService';
 import { useBankService } from './apps/bank/hooks/useBankService';
 import { useMessagesService } from './apps/messages/hooks/useMessageService';
 import { useSettings } from './apps/settings/hooks/useSettings';
@@ -52,7 +51,6 @@ function Phone() {
   useTwitterService();
   useMatchService();
   useMarketplaceService();
-  useMailService();
   useBankService();
   useMessagesService();
   useContactsListener();

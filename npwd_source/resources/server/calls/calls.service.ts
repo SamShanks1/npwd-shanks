@@ -14,7 +14,6 @@ import { callLogger } from './calls.utils';
 import { PromiseEventResp, PromiseRequest } from '../lib/PromiseNetEvents/promise.types';
 import { emitNetTyped } from '../utils/miscUtils';
 import { mainLogger } from '../sv_logger';
-import { _TwitterDB } from '../twitter/twitter.db';
 
 class CallsService {
   private callMap: Collection<string, ActiveCallRaw>;
@@ -232,7 +231,6 @@ class CallsService {
     if (reqObj.data.isUnavailable) {
       emitNet(CallEvents.WAS_ENDED, reqObj.source);
       resp({ status: 'ok' });
-      return;
     }
 
     const currentCall = this.callMap.get(transmitterNumber);
@@ -241,7 +239,7 @@ class CallsService {
       callLogger.error(
         `Call with transmitter number ${transmitterNumber} does not exist in current calls map!`,
       );
-      return resp({ status: 'error', errorMsg: 'DOES_NOT_EXIST' });
+      resp({ status: 'error', errorMsg: 'DOES_NOT_EXIST' });
     }
 
     // Just in case currentCall for some reason at this point is falsy

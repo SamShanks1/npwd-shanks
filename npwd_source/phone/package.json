@@ -6,6 +6,7 @@
   "license": "CC-BY-NC-SA-4.0",
   "homepage": "/resources/html",
   "dependencies": {
+    "@babel/runtime": "^7.17.2",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.2.0",
@@ -28,7 +29,7 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-router-dom": "^5.3.0",
     "react-scripts": "^5.0.0",
-    "recoil": "^0.4.1"
+    "recoil": "^0.6.1"
   },
   "devDependencies": {
     "@craco/craco": "^6.1.1",
@@ -59,12 +60,16 @@
     "watch": "cross-env REACT_APP_IN_GAME=1 BROWSER=none craco start",
     "build:release": "cross-env SENTRY_RELEASE=true craco build",
     "build": "craco build",
-    "test": "craco test --watchAll=false --testMatch **/src/**/*.test.{ts,js,tsx}"
+    "test": "craco test --watchAll=false --silent",
+    "test:watch": "craco test --watch"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
   "jest": {
+    "testMatch": [
+      "**/src/**/*.test.{ts,js,tsx}"
+    ],
     "moduleNameMapper": {
       "^@apps(.*)$": "<rootDir>/src/apps$1",
       "^@os(.*)$": "<rootDir>/src/os$1",
