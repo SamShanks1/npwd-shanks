@@ -9,6 +9,7 @@ import { MessageImageModal } from './MessageImageModal';
 import MessageContactModal from './MessageContactModal';
 import Backdrop from '@ui/components/Backdrop';
 import { MessageConversation } from '@typings/messages';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 
 interface MessageCtxMenuProps {
   isOpen: boolean;
