@@ -1,8 +1,12 @@
 export interface houseBaseInt {
   id: number;
   house: string;
-  keyholders: string[];
+  keyholders: [{
+    name: string;
+    citizenid: string;
+  }];
 }
+
 
 export enum HouseEvents {
   FETCH_HOUSES = 'npwd:fetchAllHouses',
@@ -44,4 +48,3 @@ export interface testInt extends houseLocationInt {
     citizenid: string;
   }];
 }
-  
