@@ -12,6 +12,7 @@ import './calls/cl_calls.controller';
 import './cl_match';
 import './functions';
 import './cl_exports';
+import './cl_houses';
 import './cl_garage';
 import './cl_mail';
 import './settings/cl_settings';

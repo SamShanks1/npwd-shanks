@@ -1,26 +1,54 @@
 import {
   houseBaseInt,
   PropertiesInt,
-  houseLocationInt
+  houseLocationInt,
+  BeforePropertiesInt,
 } from '../../../typings/house';
 import { ResultSetHeader } from 'mysql2';
 import DbInterface from '../db/db_wrapper';
+import { AnyRecord } from 'dns';
 
+interface keyHold {
+  name: string;
+  citizenid: string;
+}
 
+interface charinfo {
+  account: string;
+  firstname: string;
+  gender: number;
+  backstory: string;
+  phone: string;
+  cid: string;
+  lastname: string;
+  brithdate: string;
+  nationality: string;
+}
+
+interface initialChar {
+  charinfo: string
+}
+
+interface dbshit {
+  id: number;
+  house: string;
+  keyholders: string;
+  label: string;
+  garage: string;
+  tier: number;
+  coords: string
+}
 
 export class _HouseDB {
-
-
   async getName(citizenid: string): Promise<string> {
     const query =
       `SELECT charinfo FROM players WHERE citizenid = ?`;
     const [results] = await DbInterface._rawExec(query, [citizenid]);
-    console.log(results)
-    // return <String[]>results
-    return "sam"
+    const data = <initialChar[]>results
+    const newData: charinfo = JSON.parse(data[0].charinfo)
+    console.log('test')
+    return <string>newData.firstname + " " + newData.lastname
   }
-
-
 
   async fetchHouses(identifier: string): Promise<PropertiesInt[]> {
     const query =
@@ -29,28 +57,33 @@ export class _HouseDB {
       houselocations.tier, houselocations.coords FROM player_houses,houselocations 
       WHERE player_houses.house = houselocations.name AND player_houses.citizenid = ?`;
     const [results] = await DbInterface._rawExec(query, [identifier]);
-    const data = <PropertiesInt[]>results
-
-    const newData = data.map(house => {
-      const keyData = house.keyholders.map(key => {
-        return {
-          name: this.getName(key.citizenid),
-          citizenid: key.citizenid
-        }
-      })
+    const data = <dbshit[]>results
+    const parse: BeforePropertiesInt[] = data.map(house => {
       return {
-        label: house.label,
-        coords: house.coords,
-        tier: house.tier,
-        garage: house.garage,
         id: house.id,
         house: house.house,
-        keyholders: keyData
+        keyholders: JSON.parse(house.keyholders),
+        label: house.label,
+        garage: JSON.parse(house.garage),
+        tier: house.tier,
+        coords: JSON.parse(house.coords)
       }
     })
 
+    parse.forEach((house) => {
+      const newData = house.keyholders.map(async (keyH: any) => {
+        const shit = {
+          name: "shanks",
+          citizenid: keyH
+        }
+        return shit;
+      });
+      house.keyholders = newData;
+    })
 
-    return <PropertiesInt[]>results;
+
+    console.log(parse)
+    return <PropertiesInt[]>parse;
   }
 }
 const HouseDB = new _HouseDB();

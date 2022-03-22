@@ -13,6 +13,7 @@ import './photo/photo.controller';
 import './messages/messages.controller';
 import './marketplace/marketplace.controller';
 import './garage/garage.controller';
+import './house/house.controller';
 import './mail/mail.controller';
 import './twitter/twitter.controller';
 import './match/match.controller';

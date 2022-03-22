@@ -1,8 +1,7 @@
 import { atom, selector, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import fetchNui from '@utils/fetchNui';
 import { ServerPromiseResp } from '@typings/common';
-import { MailEvents } from '@typings/mail';
-import { PropertiesInt } from '@typings/house';
+import { PropertiesInt, HouseEvents } from '@typings/house';
 import LogDebugEvent from '../../../os/debug/LogDebugEvents';
 import { isEnvBrowser } from '../../../utils/misc';
 import { houseData } from '../utils/constants';
@@ -16,7 +15,7 @@ export const houseStates = {
             get: async () => {
                 try {
                     const resp = await fetchNui<ServerPromiseResp<PropertiesInt[]>>(
-                        MailEvents.FETCH_ALL_MAIL,
+                        HouseEvents.FETCH_HOUSES,
                     );
                     return resp.data;
                 } catch (e) {

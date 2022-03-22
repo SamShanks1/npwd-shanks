@@ -1,3 +1,10 @@
+interface keyHold {
+  keyholders: {
+    name: string;
+    citizenid: string;
+  }
+}
+
 export interface houseBaseInt {
   id: number;
   house: string;
@@ -6,6 +13,13 @@ export interface houseBaseInt {
     citizenid: string;
   }];
 }
+
+export interface houseBeforeInt {
+  id: number;
+  house: string;
+  keyholders: any;
+}
+
 
 
 export enum HouseEvents {
@@ -39,6 +53,9 @@ export interface houseLocationInt {
 }
 
 export interface PropertiesInt extends houseBaseInt, houseLocationInt { };
+
+export interface BeforePropertiesInt extends houseBeforeInt, houseLocationInt { };
+
 
 export interface testInt extends houseLocationInt {
   id: number;

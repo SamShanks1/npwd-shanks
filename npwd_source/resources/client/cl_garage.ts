@@ -1,6 +1,7 @@
 import { RegisterNuiProxy } from './cl_utils';
 import {
-    HouseEvents,
-  } from '../../typings/house';
+  GarageEvents,
+} from '../../typings/garage';
 
-RegisterNuiProxy(HouseEvents.FETCH_HOUSES);
+RegisterNuiProxy(GarageEvents.TRACK_VEHICLE);
+RegisterNuiProxy(GarageEvents.FETCH_VEHICLES);
