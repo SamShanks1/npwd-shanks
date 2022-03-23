@@ -40,14 +40,19 @@ interface dbshit {
 }
 
 export class _HouseDB {
-  async getName(citizenid: string): Promise<string> {
+
+
+
+  async getName(citizenid: string): Promise<keyHold> {
     const query =
       `SELECT charinfo FROM players WHERE citizenid = ?`;
     const [results] = await DbInterface._rawExec(query, [citizenid]);
     const data = <initialChar[]>results
     const newData: charinfo = JSON.parse(data[0].charinfo)
-    console.log('test')
-    return <string>newData.firstname + " " + newData.lastname
+    return {
+      name: newData.firstname + " " + newData.lastname,
+      citizenid: citizenid
+    }
   }
 
   async fetchHouses(identifier: string): Promise<PropertiesInt[]> {
@@ -70,19 +75,16 @@ export class _HouseDB {
       }
     })
 
-    parse.forEach((house) => {
-      const newData = house.keyholders.map(async (keyH: any) => {
-        const shit = {
-          name: "shanks",
-          citizenid: keyH
-        }
-        return shit;
+
+    for await (const house of parse) {
+      const promises = house.keyholders.map(async (keyH: string) => {
+        const keyData = await this.getName(keyH)
+        return keyData;
       });
-      house.keyholders = newData;
-    })
+      const results = await Promise.all(promises)
+      house.keyholders = results;
+    }
 
-
-    console.log(parse)
     return <PropertiesInt[]>parse;
   }
 }
