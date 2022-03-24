@@ -31,5 +31,6 @@ export const useHouseAPI = (): HouseAPIValue => {
         },
         [addAlert, deleteLocalKeyHolder],
     );
+
     return { deleteKeyHolder };
 };

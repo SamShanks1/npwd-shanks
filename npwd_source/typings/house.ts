@@ -32,15 +32,20 @@ export interface houseBeforeInt {
 }
 
 
-export interface HouseBroadcastAddDTO {
+export interface HouseBroadcastKeyAddDTO {
   data: addKeyHolder;
+}
+
+export interface HouseBroadcastHouseAddDTO {
+  data: PropertiesInt;
 }
 
 
 export enum HouseEvents {
   FETCH_HOUSES = 'npwd:fetchAllHouses',
   DELETE_KEY_HOLDER = 'npwd:deleteKeyHolder',
-  ADD_KEY_HOLDER = 'npwd:addKeyHolder'
+  ADD_KEY_HOLDER = 'npwd:addKeyHolder',
+  ADD_HOUSE = 'npwd:addHouse'
 }
 
 export interface houseLocationInt {

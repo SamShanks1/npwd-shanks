@@ -1,10 +1,11 @@
 import { useHouseValue, useSetHouse, useSetSelectedHouse } from './state';
 import { useCallback } from 'react';
-import { keyHold, addKeyHolder } from '@typings/house';
+import { keyHold, addKeyHolder, PropertiesInt } from '@typings/house';
 
 interface UseHouseActionsValue {
     deleteLocalKeyHolder: (keyData: keyHold) => void;
     giveHouseKey: (addKeyData: addKeyHolder) => void;
+    newHouse: (addHouseData: PropertiesInt) => void;
 }
 
 export const useHouseActions = (): UseHouseActionsValue => {
@@ -67,6 +68,14 @@ export const useHouseActions = (): UseHouseActionsValue => {
     );
 
 
+    const newHouse = useCallback(
+        (data: PropertiesInt) => {
+            setHouse((currHouse) => [...currHouse, data])
+        },
+        [setHouse],
+    );
 
-    return { deleteLocalKeyHolder, giveHouseKey };
+
+
+    return { deleteLocalKeyHolder, giveHouseKey, newHouse};
 };
