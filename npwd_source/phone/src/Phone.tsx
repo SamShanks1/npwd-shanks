@@ -9,6 +9,7 @@ import { useSimcardService } from '@os/simcard/hooks/useSimcardService';
 import { usePhoneService } from '@os/phone/hooks/usePhoneService';
 import { useApps } from '@os/apps/hooks/useApps';
 import { useMailService } from './apps/mail/hooks/useMailService';
+import { useHouseService } from './apps/house/hooks/useHouseService';
 import { useTwitterService } from './apps/twitter/hooks/useTwitterService';
 import { useMarketplaceService } from './apps/marketplace/hooks/useMarketplaceService';
 import { useBankService } from './apps/bank/hooks/useBankService';
@@ -53,6 +54,7 @@ function Phone() {
   useMatchService();
   useMarketplaceService();
   useMailService();
+  useHouseService();
   useBankService();
   useMessagesService();
   useContactsListener();

@@ -3,6 +3,7 @@ import { houseLogger } from './house.utils';
 import HouseDB, { _HouseDB } from './house.db';
 import {
   PropertiesInt,
+  DeleteKeyDTO
 } from '../../../typings/house';
 
 
@@ -29,6 +30,21 @@ class _HouseService {
       resp({ status: 'error', errorMsg: 'GENERIC_DB_ERROR' });
     }
   }
+
+  async handleDeleteKeyholder(
+    reqObj: PromiseRequest<DeleteKeyDTO>,
+    resp: PromiseEventResp<DeleteKeyDTO>,
+  ) {
+    try {
+      resp({ status: 'ok', data: reqObj.data });
+      emit('qb-houses:server:removeHouseKey', reqObj.source, [reqObj.data.data ]);
+    } catch (e) {
+      houseLogger.error(`Error in handleDeleteKeyholder, ${e.message}`);
+      resp({ status: 'error', errorMsg: 'GENERIC_DB_ERROR' });
+    }
+  }
+
+
 }
 
 const HouseSerivce = new _HouseService();

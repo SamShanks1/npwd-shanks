@@ -13,3 +13,5 @@ onNet('npwd:sendMailBroadcastAddNew', (broadcastEvent: MailBroadcastAddDTO) => {
     broadcastEvent.mail.date = stringDate
     sendMailEvent(MailEvents.BROADCAST_ADD, broadcastEvent);
 });
+
+

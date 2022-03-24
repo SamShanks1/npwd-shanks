@@ -1,17 +1,28 @@
-interface keyHold {
-  keyholders: {
-    name: string;
-    citizenid: string;
-  }
+export interface keyHold {
+  name: string;
+  citizenid: string;
+}
+
+export interface addKeyHolder {
+  name: string;
+  citizenid: string;
+  house: string;
+}
+
+export interface DeleteKeyDTO {
+  data: keyRemoveInt
 }
 
 export interface houseBaseInt {
   id: number;
   house: string;
-  keyholders: [{
-    name: string;
-    citizenid: string;
-  }];
+  keyholders: keyHold[];
+}
+
+export interface keyRemoveInt {
+  name: string;
+  citizenid: string;
+  house: string;
 }
 
 export interface houseBeforeInt {
@@ -21,9 +32,15 @@ export interface houseBeforeInt {
 }
 
 
+export interface HouseBroadcastAddDTO {
+  data: addKeyHolder;
+}
+
 
 export enum HouseEvents {
   FETCH_HOUSES = 'npwd:fetchAllHouses',
+  DELETE_KEY_HOLDER = 'npwd:deleteKeyHolder',
+  ADD_KEY_HOLDER = 'npwd:addKeyHolder'
 }
 
 export interface houseLocationInt {

@@ -10,9 +10,10 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { PropertiesInt } from '@typings/house';
+import { keyRemoveInt, keyHold } from '@typings/house';
 import { useSelectedHouse } from '../../hooks/state';
 import makeStyles from '@mui/styles/makeStyles';
+import { useHouseAPI } from '../../hooks/useHouseAPI';
 
 import React from 'react';
 
@@ -30,6 +31,23 @@ const useStyles = makeStyles({
 const KeysModal = ({ setPageType }) => {
   const [selectedHouse, setselectedHouse] = useSelectedHouse();
   const classes = useStyles();
+  const { deleteKeyHolder } = useHouseAPI();
+
+
+  const handleRemoveKey = (keyHolder: keyHold) => {
+    const keyRemoveData: keyRemoveInt = {
+      name: keyHolder.name,
+      house: selectedHouse.house,
+      citizenid: keyHolder.citizenid
+    }
+    
+    deleteKeyHolder({ data: keyRemoveData })
+      .then(() => {
+        console.log("success");
+      })
+      .catch(console.error);
+  };
+
 
   return (
     <>
@@ -59,7 +77,7 @@ const KeysModal = ({ setPageType }) => {
                 <Typography>{citizen.name}</Typography>
               )}
               <IconButton sx={{ margin: '0px', padding: '0px' }}>
-                <DeleteIcon />
+                <DeleteIcon onClick={()=>handleRemoveKey(citizen)}/>
               </IconButton>
             </Box>
           </ListItem>

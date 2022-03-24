@@ -30,6 +30,10 @@ export function sendMailEvent(method: string, data: any = {}): void {
   sendMessage(apps.MAIL, method, data);
 }
 
+export function sendHouseEvent(method: string, data: any = {}): void {
+  sendMessage(apps.HOUSE, method, data);
+}
+
 export function sendContactsEvent(method: string, data: any = {}): void {
   sendMessage(apps.CONTACTS, method, data);
 }

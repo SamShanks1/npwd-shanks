@@ -42,3 +42,5 @@ export const useSetSelectedHouse = () => useSetRecoilState(houseStates.selectedH
 export const useSelectedHouse = () => useRecoilState(houseStates.selectedHouse);
 
 export const useHouseValue = () => useRecoilValue(houseStates.houseItems);
+
+export const useSetHouse = () => useSetRecoilState(houseStates.houseItems);

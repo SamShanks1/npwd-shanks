@@ -1,6 +1,7 @@
 
 import { onNetPromise } from '../lib/PromiseNetEvents/onNetPromise';
 import {
+  DeleteKeyDTO,
     HouseEvents,
     PropertiesInt,
   } from '../../../typings/house';
@@ -13,5 +14,15 @@ onNetPromise<void, PropertiesInt[]>(HouseEvents.FETCH_HOUSES, async (reqObj, res
         `Error occurred in fetch house event (${reqObj.source}), Error: ${e.message}`,
       );
       resp({ status: 'error', errorMsg: 'INTERNAL_ERROR' });
+    });
+  });
+
+
+  onNetPromise<DeleteKeyDTO, DeleteKeyDTO>(HouseEvents.DELETE_KEY_HOLDER, async (reqObj, resp) => {
+    HouseSerivce.handleDeleteKeyholder(reqObj, resp).catch((e) => {
+      houseLogger.error(
+        `Error occured in delete keyholder event (${reqObj.source}), Error:  ${e.message}`,
+      );
+      resp({ status: 'error', errorMsg: 'UNKNOWN_ERROR' });
     });
   });

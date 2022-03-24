@@ -9,4 +9,5 @@ export default {
   PHONE: 'PHONE',
   GARAGE: 'GARAGE',
   MAIL: 'MAIL',
+  HOUSE: 'HOUSE'
 };

@@ -40,9 +40,6 @@ interface dbshit {
 }
 
 export class _HouseDB {
-
-
-
   async getName(citizenid: string): Promise<keyHold> {
     const query =
       `SELECT charinfo FROM players WHERE citizenid = ?`;
@@ -54,7 +51,6 @@ export class _HouseDB {
       citizenid: citizenid
     }
   }
-
   async fetchHouses(identifier: string): Promise<PropertiesInt[]> {
     const query =
       `SELECT 
@@ -74,8 +70,6 @@ export class _HouseDB {
         coords: JSON.parse(house.coords)
       }
     })
-
-
     for await (const house of parse) {
       const promises = house.keyholders.map(async (keyH: string) => {
         const keyData = await this.getName(keyH)
@@ -84,7 +78,6 @@ export class _HouseDB {
       const results = await Promise.all(promises)
       house.keyholders = results;
     }
-
     return <PropertiesInt[]>parse;
   }
 }

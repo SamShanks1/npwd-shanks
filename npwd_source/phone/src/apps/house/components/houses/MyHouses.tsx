@@ -61,9 +61,9 @@ export const MyHouses: React.FC = () => {
                     sx={{ display: 'flex', flexDirection: 'row', gap: '5px', alignItems: 'center' }}
                   >
                     <HouseSidingIcon sx={{ fontSize: 20 }} />
-                    {house.garage  //check if coords = 0 rather than if not null
-                      ? <DoneIcon sx={{fontSize: 16, stroke: "white", strokeWidth: 2  }}/> 
-                      : <CloseIcon sx={{fontSize: 16,stroke: "white", strokeWidth: 2}}/>}
+                    {(house.garage.x === 0 && house.garage.z === 0)   //check if coords = 0 rather than if not null
+                      ? <CloseIcon sx={{fontSize: 16,stroke: "white", strokeWidth: 2}}/>
+                      : <DoneIcon sx={{fontSize: 16, stroke: "white", strokeWidth: 2  }}/> }
                   </Box>
                 </Box>
               </Box>
