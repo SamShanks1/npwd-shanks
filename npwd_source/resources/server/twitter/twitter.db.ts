@@ -1,7 +1,7 @@
 import { NewTweet, Profile, Tweet } from '../../../typings/twitter';
 import { pool } from '../db/pool';
 import { ResultSetHeader } from 'mysql2';
-import { config } from '../server';
+import { config } from '../config';
 import { generateProfileName } from '../utils/generateProfileName';
 import { twitterLogger } from './twitter.utils';
 import DbInterface from '../db/db_wrapper';
@@ -64,8 +64,8 @@ export class _TwitterDB {
     const [results] = await DbInterface._rawExec(query, [
       profileId,
       profileId,
-      TWEETS_PER_PAGE,
-      offset,
+      TWEETS_PER_PAGE.toString(),
+      offset.toString(),
     ]);
     const tweets = <Tweet[]>results;
     return tweets.map(formatTweets(profileId));

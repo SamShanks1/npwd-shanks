@@ -1,7 +1,10 @@
+import './config';
+
 import { RewriteFrames } from '@sentry/integrations';
 import { config as resourceConfig } from './config';
 export const config = resourceConfig;
 import { registerCommands } from './commands/registerCommands';
+
 // Setup controllers
 import './db/pool';
 import './boot/boot.controller';
@@ -12,10 +15,10 @@ import './contacts/contacts.controller';
 import './photo/photo.controller';
 import './messages/messages.controller';
 import './marketplace/marketplace.controller';
+import './twitter/twitter.controller';
 import './garage/garage.controller';
 import './house/house.controller';
 import './mail/mail.controller';
-import './twitter/twitter.controller';
 import './match/match.controller';
 
 // setup exports

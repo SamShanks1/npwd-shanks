@@ -13,10 +13,10 @@ export const MockMessageConversations: MessageConversation[] = [
   },
   {
     id: 2,
-    conversationList: '111-1134+321+215-8134',
+    conversationList: '111-1134+321+215-8139',
     participant: '111-1134',
     unread: 0,
-    label: 'Group Chat',
+    label: 'Secret Project Error chat',
     updatedAt: 5,
     isGroupChat: true,
   },
@@ -25,20 +25,19 @@ export const MockMessageConversations: MessageConversation[] = [
 const MockConversationMessages: Message[] = [
   {
     id: 2,
-    author: '215-8134',
-    message: 'Dude, when is this phone done?????',
+    author: '215-8139',
+    message: 'Dude, when is this rewrite done?????',
   },
   {
     id: 3,
     author: '111-1134',
-    message: 'Bro, finish phone now?????',
+    message: 'Bro, finish notifications api?????',
   },
   {
     id: 4,
     author: '444-4444',
     message: "Couldn't be me!",
   },
-
 ];
 
 export const MockConversationServerResp: ServerPromiseResp<Message[]> = {

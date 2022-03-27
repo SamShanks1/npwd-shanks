@@ -1,19 +1,19 @@
 {
   "PhoneAsItem": {
     "enabled": false,
-    "exportResource": "qb-npwd",
-    "exportFunction": "HasPhone"
+    "exportResource": "my-core-resource",
+    "exportFunction": "myCheckerFunction"
   },
   "general": {
-    "useResourceIntegration": true,
-    "toggleKey": "m",
+    "useResourceIntegration": false,
+    "toggleKey": "f1",
     "toggleCommand": "phone",
     "defaultLanguage": "en"
   },
   "database": {
     "useIdentifierPrefix": false,
-    "playerTable": "players",
-    "identifierColumn": "citizenid",
+    "playerTable": "users",
+    "identifierColumn": "identifier",
     "identifierType": "license",
     "profileQueries": true,
     "phoneNumberColumn": "phone_number"
@@ -47,7 +47,7 @@
   },
   "twitter": {
     "showNotifications": true,
-    "generateProfileNameFromUsers": false,
+    "generateProfileNameFromUsers": true,
     "allowEditableProfileName": true,
     "allowDeleteTweets": true,
     "allowReportTweets": true,
