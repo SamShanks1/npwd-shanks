@@ -73,6 +73,7 @@ const AddHouseModal = () => {
     reset();
     setModalVisible(false);
   };
+
   const classes = useStyles();
   const showHideClassName = modalVisible ? classes.displayBlock : classes.displayNone;
   if (selectedHouse === null) return null;
@@ -85,6 +86,7 @@ const AddHouseModal = () => {
             setPageType={setPageType}
             transferID={transferID}
             setTransferID={setTransferID}
+            selectedHouseData={selectedHouse}
           />
         )}
         {pageType === 'keys' && <KeysModal setPageType={setPageType} />}

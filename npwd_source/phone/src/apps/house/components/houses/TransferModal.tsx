@@ -2,7 +2,14 @@ import { Box, Button, Divider, TextField } from '@mui/material';
 import { PropertiesInt } from '@typings/house';
 import React from 'react';
 
-const TransferModal = ({ setPageType, transferID, setTransferID }) => {
+const TransferModal = ({ setPageType, transferID, setTransferID, selectedHouseData }) => {
+  
+  const handleHouseTransfer = () => {
+    console.log(transferID)
+    console.log(selectedHouseData.house)
+    
+  }
+
   return (
     <>
       <Box
@@ -39,6 +46,7 @@ const TransferModal = ({ setPageType, transferID, setTransferID }) => {
           size="large"
           sx={{ width: '150px', height: '45px', marginTop: '12px' }}
           disabled={transferID.length < 8} //check if 3 letters followed by 5 numbers
+          onClick={()=>handleHouseTransfer()}
         >
           Confirm
         </Button>

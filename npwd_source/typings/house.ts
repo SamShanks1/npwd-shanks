@@ -9,6 +9,15 @@ export interface addKeyHolder {
   house: string;
 }
 
+export interface houseTransferInt {
+  house: string;
+  citizenid: string;
+}
+
+export interface houseTransDTO {
+  data: houseTransferInt
+}
+
 export interface DeleteKeyDTO {
   data: keyRemoveInt
 }
