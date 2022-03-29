@@ -1,11 +1,12 @@
 import { useHouseValue, useSetHouse, useSetSelectedHouse } from './state';
 import { useCallback } from 'react';
-import { keyHold, addKeyHolder, PropertiesInt } from '@typings/house';
+import { keyHold, addKeyHolder, PropertiesInt, houseTransferInt } from '@typings/house';
 
 interface UseHouseActionsValue {
     deleteLocalKeyHolder: (keyData: keyHold) => void;
     giveHouseKey: (addKeyData: addKeyHolder) => void;
     newHouse: (addHouseData: PropertiesInt) => void;
+    deleteHouse: (deleteData: houseTransferInt) => void;
 }
 
 export const useHouseActions = (): UseHouseActionsValue => {
@@ -35,6 +36,13 @@ export const useHouseActions = (): UseHouseActionsValue => {
             setSelectedHouse(newObj)
         },
         [houses, setHouse, setSelectedHouse],
+    );
+
+    const deleteHouse = useCallback(
+        (deleteData) => {
+            setHouse((curHouse) => [...curHouse].filter((house) => house.house !== deleteData.house));
+        },
+        [setHouse],
     );
 
 
@@ -77,5 +85,5 @@ export const useHouseActions = (): UseHouseActionsValue => {
 
 
 
-    return { deleteLocalKeyHolder, giveHouseKey, newHouse};
+    return { deleteLocalKeyHolder, giveHouseKey, newHouse, deleteHouse};
 };

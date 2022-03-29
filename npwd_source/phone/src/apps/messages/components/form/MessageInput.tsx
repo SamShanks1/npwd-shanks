@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Paper, Box, Button, styled, InputAdornment, IconButton } from '@mui/material';
+import { Paper, Box, Button, styled } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import { TextField } from '@ui/components/Input';
@@ -9,16 +9,12 @@ import { MessageConversation } from '@typings/messages';
 import useMessages from '../../hooks/useMessages';
 import { useWordFilter } from '@os/wordfilter/hooks/useWordFilter';
 import EmojiIcon from '@mui/icons-material/SentimentSatisfied';
-import { toggleKeys } from '../../../../ui/components/Input';
 import {
   useSetEmojiModal,
-  messageState,
   useEmojiModalValue,
   useSetTextMessage,
   useTextMessageValue,
-  useSelectedMessageValue,
 } from '../../hooks/state';
-import { useSetRecoilState } from 'recoil';
 interface IProps {
   onAddImageClick(): void;
   messageConversation: MessageConversation | undefined;
@@ -45,7 +41,7 @@ const MessageInput = ({ messageConversation, onAddImageClick }: IProps) => {
   useEffect(() => {
     setMessage('');
     setModalVisible(false);
-  }, []);
+  }, [setMessage, setModalVisible]);
 
   const handleSubmit = async () => {
     console.log(activeMessageConversation);

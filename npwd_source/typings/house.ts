@@ -54,7 +54,8 @@ export enum HouseEvents {
   FETCH_HOUSES = 'npwd:fetchAllHouses',
   DELETE_KEY_HOLDER = 'npwd:deleteKeyHolder',
   ADD_KEY_HOLDER = 'npwd:addKeyHolder',
-  ADD_HOUSE = 'npwd:addHouse'
+  ADD_HOUSE = 'npwd:addHouse',
+  TRANSFER_HOUSE = 'npwd:transferHouse'
 }
 
 export interface houseLocationInt {

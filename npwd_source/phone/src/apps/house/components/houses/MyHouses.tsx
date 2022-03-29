@@ -5,9 +5,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import KeyIcon from '@mui/icons-material/Key';
 import HouseSidingIcon from '@mui/icons-material/HouseSiding';
 import { houseStates, useHouseValue } from '../../hooks/state';
+import { useSetRecoilState } from 'recoil';
 import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
-import { useSetRecoilState } from 'recoil';
 import { useSetSelectedHouse } from '../../hooks/state';
 import { PropertiesInt } from '@typings/house';
 

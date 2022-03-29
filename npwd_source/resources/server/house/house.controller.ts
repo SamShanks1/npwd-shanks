@@ -3,6 +3,7 @@ import { onNetPromise } from '../lib/PromiseNetEvents/onNetPromise';
 import {
   DeleteKeyDTO,
     HouseEvents,
+    houseTransDTO,
     PropertiesInt,
   } from '../../../typings/house';
   import { houseLogger } from './house.utils';
@@ -22,6 +23,15 @@ onNetPromise<void, PropertiesInt[]>(HouseEvents.FETCH_HOUSES, async (reqObj, res
     HouseSerivce.handleDeleteKeyholder(reqObj, resp).catch((e) => {
       houseLogger.error(
         `Error occured in delete keyholder event (${reqObj.source}), Error:  ${e.message}`,
+      );
+      resp({ status: 'error', errorMsg: 'UNKNOWN_ERROR' });
+    });
+  });
+
+  onNetPromise<houseTransDTO, houseTransDTO>(HouseEvents.TRANSFER_HOUSE, async (reqObj, resp) => {
+    HouseSerivce.handleTransferHouse(reqObj, resp).catch((e) => {
+      houseLogger.error(
+        `Error occured in transfering house (${reqObj.source}), Error:  ${e.message}`,
       );
       resp({ status: 'error', errorMsg: 'UNKNOWN_ERROR' });
     });

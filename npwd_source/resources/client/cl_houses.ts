@@ -9,7 +9,7 @@ import { sendHouseEvent } from '../utils/messages';
 
 RegisterNuiProxy(HouseEvents.FETCH_HOUSES);
 RegisterNuiProxy(HouseEvents.DELETE_KEY_HOLDER);
-
+RegisterNuiProxy(HouseEvents.TRANSFER_HOUSE)
 
 onNet('npwd:addNewKeyHolder', (broadcastEvent: HouseBroadcastKeyAddDTO) => {
   sendHouseEvent(HouseEvents.ADD_KEY_HOLDER, broadcastEvent);
