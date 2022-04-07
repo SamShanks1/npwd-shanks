@@ -12,7 +12,7 @@ import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import MessageContextMenu from './MessageContextMenu';
-import EmojiModal from '../form/EmojiModal';
+
 interface IProps {
   activeMessageGroup: MessageConversation;
   messages: Message[];
@@ -60,7 +60,6 @@ const Conversation: React.FC<IProps> = ({ activeMessageGroup, messages }) => {
 
   return (
     <>
-      <EmojiModal />
       <Box display="flex" zIndex={1} flexGrow={1} flexDirection="column">
         <MessageContextMenu
           messageGroup={activeMessageGroup}

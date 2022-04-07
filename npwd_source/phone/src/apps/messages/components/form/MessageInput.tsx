@@ -21,17 +21,9 @@ interface IProps {
   messageGroupName: string | undefined;
 }
 
-const ButtonWrapper = styled(Button)({
-  background: 'transparent',
-  minWidth: '45px',
-  height: '25px',
-});
-
 const MessageInput = ({ messageConversation, onAddImageClick }: IProps) => {
   const [t] = useTranslation();
-  const message = useTextMessageValue();
-  const setMessage = useSetTextMessage();
-  // const [message, setMessage] = useState('');
+  const [message, setMessage] = useState('');
   const { sendMessage } = useMessageAPI();
   const { activeMessageConversation } = useMessages();
   const { clean } = useWordFilter();
@@ -44,7 +36,6 @@ const MessageInput = ({ messageConversation, onAddImageClick }: IProps) => {
   }, [setMessage, setModalVisible]);
 
   const handleSubmit = async () => {
-    console.log(activeMessageConversation);
     if (message.trim()) {
       await sendMessage({
         conversationId: messageConversation.id,
@@ -64,40 +55,30 @@ const MessageInput = ({ messageConversation, onAddImageClick }: IProps) => {
 
   if (!messageConversation.id) return null;
 
-  const EmojiButton = () => (
-    <ButtonWrapper onClick={() => setModalVisible(!emojiState)}>
-      <EmojiIcon color="action" />
-    </ButtonWrapper>
-  );
-
   return (
-    <>
-      <Paper variant="outlined" sx={{ display: 'flex', alignItems: 'center', maxHeight: '45px' }}>
-        <Box pl={3} pt={1} pb={1} flexGrow={1}>
-          <TextField
-            onKeyPress={handleKeyPress}
-            multiline
-            maxRows={4}
-            aria-multiline="true"
-            fullWidth
-            InputProps={{ endAdornment: <EmojiButton /> }}
-            value={message}
-            inputProps={{ style: { fontSize: '1.1em' } }}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder={t('MESSAGES.NEW_MESSAGE')}
-          />
-        </Box>
-
-        <Box>
-          <Button onClick={onAddImageClick}>
-            <IosShareIcon />
-          </Button>
-          <Button onClick={handleSubmit}>
-            <SendIcon />
-          </Button>
-        </Box>
-      </Paper>
-    </>
+    <Paper variant="outlined" sx={{ display: 'flex', alignItems: 'center' }}>
+      <Box pl={3} pt={1} pb={1} flexGrow={1}>
+        <TextField
+          onKeyPress={handleKeyPress}
+          multiline
+          maxRows={4}
+          aria-multiline="true"
+          fullWidth
+          inputProps={{ style: { fontSize: '1.3em' } }}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder={t('MESSAGES.NEW_MESSAGE')}
+        />
+      </Box>
+      <Box>
+        <Button onClick={onAddImageClick}>
+          <IosShareIcon />
+        </Button>
+        <Button onClick={handleSubmit}>
+          <SendIcon />
+        </Button>
+      </Box>
+    </Paper>
   );
 };
 

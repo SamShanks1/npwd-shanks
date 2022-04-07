@@ -94,14 +94,6 @@ export const messageState = {
     key: 'messageIsEditing',
     default: false,
   }),
-  emojiModal: atom<boolean>({
-    key: 'emojiModal',
-    default: false,
-  }),
-  textMessage: atom<string>({
-    key: 'messageValue',
-    default: "",
-  })
 };
 
 export const useMessageConversationsValue = () => useRecoilValue(messageState.messageCoversations);
@@ -132,10 +124,3 @@ export const useCheckedConversationsValue = () => useRecoilValue(messageState.ch
 
 export const useIsEditing = () => useRecoilState(messageState.isEditing);
 export const useIsEditingValue = () => useRecoilValue(messageState.isEditing);
-
-export const useSetEmojiModal = () => useSetRecoilState(messageState.emojiModal);
-export const useEmojiModalValue = () => useRecoilValue(messageState.emojiModal);
-
-
-export const useSetTextMessage = () => useSetRecoilState(messageState.textMessage);
-export const useTextMessageValue = () => useRecoilValue(messageState.textMessage);
