@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-import React, { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Paper, Box, Button, styled } from '@mui/material';
-=======
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Paper, Box, Button, styled, InputAdornment, IconButton } from '@mui/material';
->>>>>>> parent of 1e282a5 (emoji merge)
 import SendIcon from '@mui/icons-material/Send';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import { TextField } from '@ui/components/Input';
