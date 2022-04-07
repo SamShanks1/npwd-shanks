@@ -121,7 +121,7 @@ class CallsService {
     }
 
     // At this point we return back to the client that the player contacted
-    // is technically available and therefore intialization process ic omplete
+    // is technically available and therefore initialization process ic complete
     resp({
       status: 'ok',
       data: {
@@ -214,8 +214,8 @@ class CallsService {
     }
 
     // player who is calling and recieved the rejection.
-    emitNet(CallEvents.WAS_REJECTED, currentCall.transmitterSource, currentCall);
     emitNet(CallEvents.WAS_REJECTED, currentCall.receiverSource, currentCall);
+    emitNet(CallEvents.WAS_REJECTED, currentCall.transmitterSource, currentCall);
 
     // Update our database
     await this.callsDB.updateCall(currentCall, false, endCallTimeUnix);
@@ -232,6 +232,7 @@ class CallsService {
       // TODO: Need to get receiever number so we can return this as WAS_REJECTED so it gets added to the call history
       emitNet(CallEvents.WAS_ENDED, reqObj.source);
       resp({ status: 'ok' });
+      return;
     }
 
     const currentCall = this.callMap.get(transmitterNumber);
@@ -240,7 +241,7 @@ class CallsService {
       callLogger.error(
         `Call with transmitter number ${transmitterNumber} does not exist in current calls map!`,
       );
-      resp({ status: 'error', errorMsg: 'DOES_NOT_EXIST' });
+      return resp({ status: 'error', errorMsg: 'DOES_NOT_EXIST' });
     }
 
     // Just in case currentCall for some reason at this point is falsy
@@ -250,19 +251,19 @@ class CallsService {
       if (currentCall.is_accepted) {
         emitNet(
           CallEvents.WAS_ENDED,
-          currentCall.transmitterSource,
+          currentCall.receiverSource,
           currentCall.transmitterSource,
           currentCall,
         );
         emitNet(
           CallEvents.WAS_ENDED,
-          currentCall.receiverSource,
+          currentCall.transmitterSource,
           currentCall.transmitterSource,
           currentCall,
         );
       } else {
-        emitNet(CallEvents.WAS_REJECTED, currentCall.transmitterSource, currentCall);
         emitNet(CallEvents.WAS_REJECTED, currentCall.receiverSource, currentCall);
+        emitNet(CallEvents.WAS_REJECTED, currentCall.transmitterSource, currentCall);
       }
     }
     // player who is calling (transmitter)

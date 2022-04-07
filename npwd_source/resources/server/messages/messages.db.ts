@@ -56,7 +56,7 @@ export class _MessagesDB {
                           npwd_messages.embed
                    FROM npwd_messages
                    WHERE conversation_id = ?
-                   ORDER BY createdAt
+                   ORDER BY createdAt DESC
                    LIMIT ? OFFSET ?`;
 
     const [results] = await DbInterface._rawExec(query, [

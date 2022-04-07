@@ -86,10 +86,12 @@ class _TwitterService {
       const identifier = PlayerService.getIdentifier(src);
       const profile = await this.twitterDB.getProfile(identifier);
 
-      if (!profile)
-        return twitterLogger.warn(
+      if (!profile) {
+        twitterLogger.warn(
           `Aborted fetching tweets for user ${identifier} because they do not have a profile.`,
         );
+        return resp({ status: 'ok', data: [] });
+      }
 
       const tweets = await this.twitterDB.fetchAllTweets(profile.id, pageIdx);
 
@@ -116,7 +118,7 @@ class _TwitterService {
       twitterLogger.error(`Fetch filtered tweets failed, ${e.message}`, {
         source: reqObj.source,
       });
-      resp({ status: 'error', errorMsg: e.message });
+      resp({ status: 'error', errorMsg: 'TWITTER.FEEDBACK.FILTERED_FETCH_FAILED' });
     }
   }
 
