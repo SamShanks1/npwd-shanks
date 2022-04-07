@@ -59,7 +59,7 @@ export const vehicleState ={
   }),
 }),
 filterValue: atom<string>({
-  key: 'defaultFilterValue',
+  key: 'defaultFilterValueGarage',
   default: '',
 }),
 filteredGarageVehicles: selector<VehicleInterface[]>({

@@ -50,7 +50,7 @@ export const listingState = {
     }),
   }),
   filterValue: atom<string>({
-    key: 'defaultFilterValue',
+    key: 'defaultFilterValueMarketplace',
     default: '',
   }),
   filteredMarketplaceListings: selector<MarketplaceListing[]>({
