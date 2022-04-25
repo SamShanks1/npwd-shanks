@@ -18,7 +18,7 @@ const defaultVehicleData: VehicleInterface[] = [
   },
   {
     id: 2,
-    vehicle: 'Truffade Test',
+    vehicle: 'Truffade Adder',
     plate: 'PFA 6233',
     state: 0,
     garage: 'Alta Garage',
@@ -28,7 +28,7 @@ const defaultVehicleData: VehicleInterface[] = [
   },
   {
     id: 3,
-    vehicle: 'Weeny Test',
+    vehicle: 'Grotti Turismo',
     plate: 'FAD 5234',
     state: 2,
     garage: 'Alta Garage',

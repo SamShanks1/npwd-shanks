@@ -18,6 +18,15 @@ onNetPromise<void, PropertiesInt[]>(HouseEvents.FETCH_HOUSES, async (reqObj, res
     });
   });
 
+  onNetPromise<void, PropertiesInt[]>(HouseEvents.FETCH_KEYS, async (reqObj, resp) => {
+    HouseSerivce.handleFetchKeys(reqObj, resp).catch((e) => {
+      houseLogger.error(
+          `Error occurred in fetch house event (${reqObj.source}), Error: ${e.message}`,
+        );
+        resp({ status: 'error', errorMsg: 'INTERNAL_ERROR' });
+      });
+    });
+
 
   onNetPromise<DeleteKeyDTO, DeleteKeyDTO>(HouseEvents.DELETE_KEY_HOLDER, async (reqObj, resp) => {
     HouseSerivce.handleDeleteKeyholder(reqObj, resp).catch((e) => {

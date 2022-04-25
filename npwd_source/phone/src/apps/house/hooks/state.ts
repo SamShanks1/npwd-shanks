@@ -4,7 +4,7 @@ import { ServerPromiseResp } from '@typings/common';
 import { PropertiesInt, HouseEvents } from '@typings/house';
 import LogDebugEvent from '../../../os/debug/LogDebugEvents';
 import { isEnvBrowser } from '../../../utils/misc';
-import { houseData } from '../utils/constants';
+import { houseData, keyData } from '../utils/constants';
 
 
 export const houseStates = {
@@ -28,6 +28,26 @@ export const houseStates = {
             },
         }),
     }),
+    myKeys: atom({
+        key: 'myKeys',
+        default: selector<PropertiesInt[]>({
+            key: 'defaultMyKeys',
+            get: async () => {
+                try {
+                    const resp = await fetchNui<ServerPromiseResp<PropertiesInt[]>>(
+                        HouseEvents.FETCH_KEYS,
+                    );
+                    return resp.data;
+                } catch (e) {
+                    if (isEnvBrowser()) {
+                        return keyData;
+                    }
+                    console.error(e);
+                    return [];
+                }
+            },
+        }),
+    }),
     selectedHouse: atom<Partial<PropertiesInt> | null>({
         key: 'selectedHouse',
         default: null,
@@ -42,5 +62,8 @@ export const useSetSelectedHouse = () => useSetRecoilState(houseStates.selectedH
 export const useSelectedHouse = () => useRecoilState(houseStates.selectedHouse);
 
 export const useHouseValue = () => useRecoilValue(houseStates.houseItems);
+
+export const useMyKeys = () => useRecoilValue(houseStates.myKeys);
+
 
 export const useSetHouse = () => useSetRecoilState(houseStates.houseItems);

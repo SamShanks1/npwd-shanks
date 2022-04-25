@@ -80,6 +80,34 @@ export class _HouseDB {
     }
     return <PropertiesInt[]>parse;
   }
+
+  async fetchKeys(identifier: string): Promise<PropertiesInt[]> {
+    const query =
+      `SELECT 
+      player_houses.id, player_houses.house, player_houses.keyholders, houselocations.label, houselocations.garage,
+      houselocations.tier, houselocations.coords FROM player_houses,houselocations 
+      WHERE player_houses.house = houselocations.name`;
+    const [results] = await DbInterface._rawExec(query, [identifier]);
+    const data = <dbshit[]>results
+    const parse: BeforePropertiesInt[] = data.map(house => {
+      return {
+        id: house.id,
+        house: house.house,
+        keyholders: JSON.parse(house.keyholders),
+        label: house.label,
+        garage: JSON.parse(house.garage),
+        tier: house.tier,
+        coords: JSON.parse(house.coords)
+      }
+    })
+    const MyKeys: BeforePropertiesInt[] = []
+    parse.forEach(house => {
+      if (house.keyholders.includes(identifier)) {
+        MyKeys.push(house)
+      }
+    })
+    return MyKeys;
+  }
 }
 const HouseDB = new _HouseDB();
 export default HouseDB;

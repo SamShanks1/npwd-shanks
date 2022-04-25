@@ -52,12 +52,21 @@ export interface HouseBroadcastHouseAddDTO {
 
 export enum HouseEvents {
   FETCH_HOUSES = 'npwd:fetchAllHouses',
+  FETCH_KEYS = 'npwd:fetchAllKeys',
   DELETE_KEY_HOLDER = 'npwd:deleteKeyHolder',
   ADD_KEY_HOLDER = 'npwd:addKeyHolder',
   ADD_HOUSE = 'npwd:addHouse',
-  TRANSFER_HOUSE = 'npwd:transferHouse'
+  TRANSFER_HOUSE = 'npwd:transferHouse',
+  MARK_HOUSE = 'npwd:markHouse'
 }
 
+
+export interface houseCoords {
+    h: number;
+    x: number;
+    y: number;
+    z: number;
+}
 export interface houseLocationInt {
   label: string;
   coords: {

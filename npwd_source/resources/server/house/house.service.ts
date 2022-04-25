@@ -31,6 +31,22 @@ class _HouseService {
       resp({ status: 'error', errorMsg: 'GENERIC_DB_ERROR' });
     }
   }
+  async handleFetchKeys(
+    reqObj: PromiseRequest<void>,
+    resp: PromiseEventResp<PropertiesInt[]>,
+  ) {
+    const identifier = PlayerService.getIdentifier(reqObj.source);
+    try {
+      const listings = await this.houseDB.fetchKeys(identifier);
+      resp({ data: listings, status: 'ok' });
+    } catch (e) {
+      houseLogger.error(`Failed to fetch houses, ${e.message}`, {
+        source: reqObj.source,
+      });
+      resp({ status: 'error', errorMsg: 'GENERIC_DB_ERROR' });
+    }
+  }
+
 
   async handleDeleteKeyholder(
     reqObj: PromiseRequest<DeleteKeyDTO>,
