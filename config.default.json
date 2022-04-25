@@ -8,7 +8,8 @@
     "useResourceIntegration": false,
     "toggleKey": "f1",
     "toggleCommand": "phone",
-    "defaultLanguage": "en"
+    "defaultLanguage": "en",
+    "showId": false
   },
   "database": {
     "useIdentifierPrefix": false,
@@ -62,6 +63,9 @@
   "match": {
     "generateProfileNameFromUsers": true,
     "allowEditableProfileName": true
+  },
+  "marketplace": {
+    "persistListings": false
   },
   "debug": {
     "level": "error",
