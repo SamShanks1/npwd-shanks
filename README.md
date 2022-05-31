@@ -8,7 +8,7 @@ Housing
 Mail
 
 Picutres
-https://imgur.com/mKLywNE
+https://imgur.com/a/w9v19PF
 
 I have no clue if housing is working on this repo as I can't seem to find my files and can't remember what I ended up pushing
 
